@@ -1,0 +1,26 @@
+syntax = "proto3";
+package m.highscore.v1;
+
+// this should be with './'. Otherwise it will throw the error of import path not provided
+// https://github.com/techschool/pcbook-go/issues/3#issuecomment-821860413
+option go_package = "./;pb";
+
+service Game{
+  rpc SetHighScore(SetHighScoreRequest) returns (SetHighScoreResponse);
+  rpc GetHighScore(GetHighScoreRequest) returns (GetHighScoreResponse);
+}
+
+message SetHighScoreRequest {
+  double high_score = 1;
+}
+
+message SetHighScoreResponse {
+  bool set = 1;
+}
+
+message GetHighScoreRequest {
+}
+
+message GetHighScoreResponse {
+  double high_score = 1;
+}
